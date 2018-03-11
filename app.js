@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var routes = require('./api/routes');
 
 
 var app = express();
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use('/api', routes);
 
 var server = app.listen(app.get("port"), function() {
     var port = server.address().port;
