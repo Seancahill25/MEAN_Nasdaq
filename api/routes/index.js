@@ -1,8 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+var ctrlCompanys = require('../controllers/companys.controllers.js');
+
 router
-    .route("/");
+    .route("/companys")
+    .get(ctrlCompanys.getAllCompanys);
+    
+router
+    .route('/companys/:companyId')
+    .get(ctrlCompanys.getOneCompany);
 
 module.exports = router;
