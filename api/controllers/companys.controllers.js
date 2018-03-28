@@ -35,32 +35,32 @@ module.exports.getAllCompanys = function(req, res){
 };
 
 module.exports.getOneCompany = function(req, res){
+  
+   var id = req.params.companyId;
+        console.log("GET companyId", id);
+        
+        Companys
+        .findById(id)
+        .exec(function(err, doc) {
+            var response = {
+                status : 200,
+                message : doc
+            };
+            if (err) {
+                console.log("Error finding company");
+                response.status = 500;
+                response.message = err;
+            } else if(!doc) {
+                console.log("companyId not found in database", id);
+                response.status = 404;
+                response.message = {
+                    "message" : "company ID not found " + id
+                };
+            }  
+            res
+            .status(response.status)
+            .json(response.message);
+        });
 
-  var id = req.params.id;
-  console.log("GET id", id);
-    
-  Companys
-      .findOne({
-          _id : id 
-      }, function(err, doc){
-          var response = {
-              status: 200,
-              message: doc
-          };
-          if(!doc) {
-              response.status = 404;
-              response.message = {
-                  "message": "Company not found"
-              };
-          }
-          else if(err){
-              console.log("Error finding company");
-              response.status = 500;
-              response.message = err;
-          } 
-          res
-              .status(response.status)
-              .json(response.message); 
-       });
 };
 

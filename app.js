@@ -1,6 +1,7 @@
 require("./api/data/db.js");
 var express = require('express');
 var mongoose = require('mongoose');
+var User = require('./api/models/users.model.js');
 var routes = require('./api/routes');
 var path = require('path');
 var bodyParser = require('body-parser');
