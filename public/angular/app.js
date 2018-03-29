@@ -26,7 +26,7 @@ function config($httpProvider, $routeProvider) {
         controllerAs: 'vm'
     })
     .when("/register", {
-        templateUrl: 'angular/register/register.html',
+        templateUrl: 'angular/profile/register/register.html',
         controller: RegisterController,
         controllerAs: 'vm'
     })

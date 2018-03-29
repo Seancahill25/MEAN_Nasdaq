@@ -29,15 +29,15 @@ module.exports.register = function(req, res) {
 module.exports.login = function(req, res) {
     console.log("logging in user");
     var username = req.body.username;
+    console.log(req.body);
     var password = req.body.password;
-    
     User.findOne ({
         username: username
     }).exec(function(err, user) {
-        if (err) {
+        if (err) { 
             console.log(err);
             res.status(400).json(err);
-        }  else {
+        }  else { console.log(user);
             if (bcrypt.compareSync(password, user.password)) {
                 console.log("User found", user);
                 var token = jwt.sign({ username: user.username }, "s3cr3t", { expiresIn: 3600});

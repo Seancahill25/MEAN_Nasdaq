@@ -3,10 +3,13 @@ var router = express.Router();
 
 var ctrlCompanys = require('../controllers/companys.controllers.js');
 var ctrlUsers = require("../controllers/users.controllers.js");
+var ctrlSearch = require("../controllers/search.controllers.js");
 
 router
     .route("/companys")
-    .get(ctrlCompanys.getAllCompanys);
+    .get(ctrlCompanys.getAllCompanys)
+    .get(ctrlSearch.getSearch)
+    .post(ctrlSearch.saveSearch);
     
 router
     .route('/companys/:companyId')

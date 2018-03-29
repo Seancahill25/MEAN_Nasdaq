@@ -2,7 +2,8 @@
     
 <div>
     <label>Search for Compnays:</label>
-    <input type="text" ng-model="searchBar">
+    <input type="text" ng-model="searchBar" placeholder="Enter Company name">
+    <button type="submit">Save search</button>
 </div>
     <div>
         <table class="table table-striped">
@@ -15,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr dir-paginate="company in vm.companys | filter: searchBar | itemsPerPage: 20" [total-items="3288" ]>
+                <tr  dir-paginate="company in vm.companys | filter: searchBar | itemsPerPage: 20" [total-items="3288" ]>
                     <td><a ng-href="#/companys/{{company._id}}">{{company.Name}}</a></td>
                     <td>{{company.Symbol}}</td>
                     <td>{{company.LastSale}}</td>
@@ -24,5 +25,6 @@
             </tbody>
         </table>
         
-    <dir-pagination-controls></dir-pagination-controls>
+       <dir-pagination-controls></dir-pagination-controls>
+    
     </div>
